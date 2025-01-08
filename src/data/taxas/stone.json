@@ -1,0 +1,32 @@
+{
+  "visa": {
+    "debito": 1.19,
+    "credito": 2.08,
+    "1_ate_6": 2.5,
+    "7_ate_18": 2.72
+  },
+  "MasterCard": {
+    "debito": 1.19,
+    "credito": 2.08,
+    "1_ate_6": 2.5,
+    "7_ate_18": 2.72
+  },
+  "Elo": {
+    "debito": 2.05,
+    "credito": 3.07,
+    "1_ate_6": 3.33,
+    "7_ate_18": 3.88
+  },
+  "Hiper": {
+    "debito": 0,
+    "credito": 2.05,
+    "1_ate_6": 3.06,
+    "7_ate_18": 3.45
+  },
+  "AmericanExpress": {
+    "debito": 0,
+    "credito": 3.15,
+    "1_ate_6": 3.26,
+    "7_ate_18": 3.39
+  }
+}
