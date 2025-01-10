@@ -36,7 +36,7 @@ export default async function handleAwaitingFile(
           if (!fs.existsSync(directoryPath)) {
             fs.mkdirSync(directoryPath);
           }
-          console.log("Dados: ", data)
+          
           const pdfPath = await generatePDF(
             data,
             path.join(directoryPath, `relatorio_${Date.now()}.pdf`)

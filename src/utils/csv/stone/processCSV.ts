@@ -64,15 +64,39 @@ export function processCSV(filePath: string, callback: (data: any[]) => void) {
       } = data;
 
       const installments = parseInt(qtddeparcelas.trim(), 10);
+
       let fees = 0;
 
       const flagFees = pickUpFeesByFlag(BANDEIRA as Flag);
 
       if (flagFees) {
-        if (PRODUTO === "Crédito") {
+        if (
+          PRODUTO === "Crédito" ||
+          PRODUTO === "Crédito 1x" ||
+          PRODUTO === "Crédito 2x" ||
+          PRODUTO === "Crédito 3x" ||
+          PRODUTO === "Crédito 4x" ||
+          PRODUTO === "Crédito 5x" ||
+          PRODUTO === "Crédito 6x" ||
+          PRODUTO === "Crédito 7x" ||
+          PRODUTO === "Crédito 8x" ||
+          PRODUTO === "Crédito 9x" ||
+          PRODUTO === "Crédito 10x" ||
+          PRODUTO === "Crédito 11x" ||
+          PRODUTO === "Crédito 12x" ||
+          PRODUTO === "Crédito 13x" ||
+          PRODUTO === "Crédito 14x" ||
+          PRODUTO === "Crédito 15x" ||
+          PRODUTO === "Crédito 16x" ||
+          PRODUTO === "Crédito 17x" ||
+          PRODUTO === "Crédito 18x"
+        ) {
+          console.log("Credito");
           if (installments === 1) {
+            console.log("Credito 1x");
             fees = flagFees.Crédito as number;
           } else if (installments === 2) {
+            console.log("Credito 2x");
             fees = flagFees["Crédito (2x)"] as number;
           } else if (installments === 3) {
             fees = flagFees["Crédito (3x)"] as number;
@@ -110,6 +134,7 @@ export function processCSV(filePath: string, callback: (data: any[]) => void) {
             fees = 0;
           }
         } else {
+          console.log("Debito");
           fees = flagFees.Débito as number;
         }
       }
@@ -121,8 +146,9 @@ export function processCSV(filePath: string, callback: (data: any[]) => void) {
         "QUANTIDADE DE PARCELAS": qtddeparcelas,
         TAXA: fees,
         "VALOR LÍQUIDO": (
-          parseFloat(filteredData["VALOR BRUTO"]) *
-          (1 - fees / 100)
+          Math.floor(
+            parseFloat(filteredData["VALOR BRUTO"]) * (1 - fees / 100) * 100
+          ) / 100
         ).toFixed(2),
       });
     })

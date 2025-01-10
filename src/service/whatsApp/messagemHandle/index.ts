@@ -34,12 +34,7 @@ export async function handleMessage(message: Message) {
     case "awaiting_file":
       await handleAwaitingFile(message, userId);
     default:
-      client.sendMessage(
-        userId,
-        "Algo deu errado. Por favor, envie *relatório* para começar novamente."
-      );
       setUserState(userId, { state: "default" });
       break;
   }
 }
-  

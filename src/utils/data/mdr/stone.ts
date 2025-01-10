@@ -2,7 +2,7 @@
 import stone from "../../../data/taxas/stone.json";
 
 // Utils
-import { CalculateAverageDeadLine } from "../../CalculateAverageDeadLine";
+import { CalculateAverageDeadLine } from "../../calculateAverageDeadLine";
 import { CalculateCreditRate } from "../../calculateCreditRate";
 
 // Tipagem
@@ -82,6 +82,7 @@ tableStoneMDR.forEach((linha) => {
     const coluna = `Taxa Crédito (${index + 1}x)`;
     if (linha[coluna] !== undefined) {
       linha[coluna] = CalculateCreditRate(linha[coluna] as number, 1.35, prazo);
+      
     }
   });
 });
