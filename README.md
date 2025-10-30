@@ -1,5 +1,11 @@
 ### 30 de outubro de 2025
-
+### Implementação do Módulo de Autenticação
+- Desenvolvidos os endpoints de autenticação: `/auth/register`, `/auth/login`, `/auth/refresh` e `/auth/logout`.
+- Inclui: registro de usuário com hash de senha (bcrypt) e `confirmed=false`; autenticação com geração de JWT (access token) e refresh token (armazenado em DB/Redis); rotação de tokens; e revogação.
+- Validações implementadas: formato de e-mail (regex) e complexidade de senha (mín. 8 caracteres, letra, número).
+- A documentação OpenAPI/Swagger foi atualizada com os esquemas (`LoginRequest`, `RegisterRequest`, `TokenResponse`, `ErrorResponse`) e autorização `bearerAuth`.
+- Esta implementação estabelece a fundação para a gestão de usuários e segurança da aplicação, impactando diretamente os fluxos de acesso.
+- Pontos críticos para atenção e futuros desenvolvimentos incluem: política de expiração de tokens (access token de 1h), proteção contra força bruta, segurança da rotação de refresh token (replay) e a necessidade de revogação imediata de access tokens (blacklist).
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
